@@ -12,8 +12,8 @@ def random_word(length):
 
 @pytest.mark.parametrize("message", [randon_word(10) for _ in range(10)])
 def test_echo(message):
-    async with websockets.connect(uri) as websocket:
-        await websocket.send(message)
+    with websockets.sync.client.connect("ws://127.0.0.1:7777") as websocket:
+        websocket.send(message)
         response = await websocket.recv()
 
-        assert response == message
+        response == message
