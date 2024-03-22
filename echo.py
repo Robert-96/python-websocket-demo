@@ -11,7 +11,7 @@ import websockets
 async def echo(websocket):
     print(">>> Connected")
     async for message in websocket:
-        print(f">>> Received: {message}")
+        print(f"<<< Received: {message}")
         await websocket.send(message)
 
 
